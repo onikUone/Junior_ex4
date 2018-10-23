@@ -79,20 +79,23 @@ public class Fuzzy {
 	}
 
 	//未知パターン推論
-	public static int reasoning(double[] x, Individual[] individuals) {
+	public static int reasoning(double[] x, Individual[] individual) {
 		int reasoningClass = -1;
 		double max = 0;
 		double comp = 0;
-		for (int i = 0; i < individuals.length; i++) {
+		for (int i = 0; i < individual.length; i++) {
 			if(i == 0) {
-				max = calcFit(individuals[i].rule, x) * individuals[i].weight;
-				reasoningClass = individuals[i].myClass;
+				max = calcFit(individual[i].rule, x) * individual[i].weight;
+				reasoningClass = individual[i].myClass;
 			}
 			else {
-				comp = calcFit(individuals[i].rule, x) * individuals[i].weight;
+				if(individual[i].weight <= 0.5) {
+					continue;
+				}
+				comp = calcFit(individual[i].rule, x) * individual[i].weight;
 				if(comp > max) {
 					max = comp;
-					reasoningClass = individuals[i].myClass;
+					reasoningClass = individual[i].myClass;
 				}
 			}
 		}

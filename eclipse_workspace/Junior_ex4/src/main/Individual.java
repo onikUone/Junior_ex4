@@ -5,6 +5,7 @@ public class Individual {
 	int myClass;
 	double weight;
 	double trust;
+	int fitness;	//自身の評価値
 	int[] rule; //rule[n] nは入力パターンの属性数
 
 	//memberFunction
@@ -42,6 +43,7 @@ public class Individual {
 	//constractor
 	Individual(int[] rule, Fuzzy f) {
 		this.rule = new int[f.attribute];
+		this.fitness = 0;
 		for(int i=0; i<f.attribute; i++) {
 			this.rule[i] = rule[i];
 		}
