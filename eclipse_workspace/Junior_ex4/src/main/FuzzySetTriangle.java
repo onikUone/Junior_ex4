@@ -8,7 +8,8 @@ package main;
  *
  */
 public final class FuzzySetTriangle {
-	public static final int[][] TriRule = new int[1+2+3][2];	//triRule[don'tCare + 2division + 3division][k and K]
+	public static final int ruleNumber = 5;
+	public static final int[][] TriRule = new int[1+ruleNumber][2];	//triRule[don'tCare + 2division + 3division][k and K]
 	static {
 		TriRule[0][0] = 0; TriRule[0][1] = 0;		//don't care
 

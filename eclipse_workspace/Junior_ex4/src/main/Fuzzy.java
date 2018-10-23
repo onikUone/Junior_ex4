@@ -12,18 +12,20 @@ public class Fuzzy {
 	//field
 	double[][] x; //学習パターン x[pattern][attribute]
 	int[] y;
+	int pattern;
+	int attribute;
 	int classes;
 
 	//memberFunction
 	//ファイル読み込みメソッド
-	public int readFile(String path) throws IOException {
+	public void readFile(String path) throws IOException {
 		List<String[]> list = new ArrayList<String[]>();
 		BufferedReader in = new BufferedReader(new FileReader(path));
 		String line;
 		line = in.readLine();
-		int pattern = Integer.parseInt(line.split(",")[0]);
-		int attribute = Integer.parseInt(line.split(",")[1]);
-		int classes = Integer.parseInt(line.split(",")[2]);
+		this.pattern = Integer.parseInt(line.split(",")[0]);
+		this.attribute = Integer.parseInt(line.split(",")[1]);
+		this.classes = Integer.parseInt(line.split(",")[2]);
 		x = new double[pattern][attribute];
 		y = new int[pattern];
 		while ((line = in.readLine()) != null) {
@@ -36,7 +38,6 @@ public class Fuzzy {
 			}
 			y[i] = Integer.parseInt(list.get(i)[attribute]);
 		}
-		return classes;
 	}
 
 	//メンバシップ関数
@@ -100,6 +101,6 @@ public class Fuzzy {
 
 	//constractor
 	Fuzzy(String path) throws IOException {
-		classes = readFile(path);
+		readFile(path);
 	}
 }

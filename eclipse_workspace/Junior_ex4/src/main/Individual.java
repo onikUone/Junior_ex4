@@ -40,9 +40,12 @@ public class Individual {
 	}
 
 	//constractor
-	Individual(int[] rule, double[][] x, int[] y, int classes) {
-		this.rule = rule;
-		decideMyClass(x, y, classes);
-		calcMyWeight(x, y, classes);
+	Individual(int[] rule, Fuzzy f) {
+		this.rule = new int[f.attribute];
+		for(int i=0; i<f.attribute; i++) {
+			this.rule[i] = rule[i];
+		}
+		decideMyClass(f.x, f.y, f.classes);
+		calcMyWeight(f.x, f.y, f.classes);
 	}
 }
