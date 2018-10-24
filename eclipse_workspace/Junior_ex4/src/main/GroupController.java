@@ -15,15 +15,14 @@ public class GroupController {
 
 	//test個体群
 	public void testGenerate() {
-		int setRule1[] = {0,0,0,2,0,0,0,0};
-		int setRule2[] = {0,4,0,0,3,0,0,4};
-		int setRule3[] = {0,1,0,3,1,2,0,0};
-		individual[0] = new Individual(setRule1,f);
-		individual[1] = new Individual(setRule2,f);
-		individual[2] = new Individual(setRule3,f);
+		int setRule1[] = { 0, 0, 0, 2, 0, 0, 0, 0 };
+		int setRule2[] = { 0, 4, 0, 0, 3, 0, 0, 4 };
+		int setRule3[] = { 0, 1, 0, 3, 1, 2, 0, 0 };
+		individual[0] = new Individual(setRule1, f);
+		individual[1] = new Individual(setRule2, f);
+		individual[2] = new Individual(setRule3, f);
 
 	}
-
 
 	//初期個体群の生成
 	public void initialGenerate() {
@@ -42,34 +41,39 @@ public class GroupController {
 
 	}
 
-
-
 	//個体の評価
 	public void evaluation() {
-		int useRuleIndex = -1;
+		int flg;
+		int maxRuleIndex = -1;
 		double max = 0;
 		double comp = 0;
-		recog: for (int p = 0; p < f.x.length; p++) {
+		for (int p = 0; p < f.x.length; p++) {
+			flg = 0;
 			for (int i = 0; i < Npop; i++) {
-				if (i == 0) {
+				if (individual[i].trust <= 0.5) {
+					continue;
+				}
+				if (flg == 0) {
 					max = Fuzzy.calcFit(individual[i].rule, f.x[p]) * individual[i].weight;
-					useRuleIndex = i;
+					maxRuleIndex = i;
+					flg = 1;
 				} else {
-					if (individual[i].trust <= 0.5) {
-						continue recog;
-					}
 					comp = Fuzzy.calcFit(individual[i].rule, f.x[p]) * individual[i].weight;
-					if(comp == max) {//同じかつ結論部が違う処理追加
-						continue recog;
+					if (comp == max) {
+						if (individual[maxRuleIndex].myClass != individual[i].myClass || comp == 0) {
+							flg = -1;
+							continue;
+						}
 					}
 					if (comp > max) {
 						max = comp;
-						useRuleIndex = i;
+						maxRuleIndex = i;
+						flg = 1;
 					}
 				}
 			}
-			if(individual[useRuleIndex].myClass == f.y[p]) {
-				individual[useRuleIndex].fitness++;
+			if (flg != -1 && individual[maxRuleIndex].myClass == f.y[p]) {
+				individual[maxRuleIndex].fitness++;
 			}
 		}
 
@@ -78,7 +82,7 @@ public class GroupController {
 	//constractor
 	GroupController(int Npop, Fuzzy f, MersenneTwisterFast mtf) {
 		this.mtf = mtf;
-//		this.Npop = Npop;
+		//		this.Npop = Npop;
 		this.individual = new Individual[this.Npop];
 		this.attribute = f.attribute;
 		this.pDontCare = (double) (this.attribute - ruleNumber) / (double) f.attribute;

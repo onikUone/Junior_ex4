@@ -15,9 +15,12 @@ public class Main {
 		GroupController gc = new GroupController(30, f, mtf);
 		gc.testGenerate();
 		gc.evaluation();
+		System.out.println("-----");
 		System.out.println(gc.individual[0].fitness);
 		System.out.println(gc.individual[1].fitness);
 		System.out.println(gc.individual[2].fitness);
+		System.out.println("-----");
+
 
 //		gc.initialGenerate();
 //		System.out.println(gc.pDontCare);

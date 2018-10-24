@@ -32,6 +32,11 @@ public class Individual {
 	//自身のルール重み計算メソッド
 	public void calcMyWeight(double[][] x, int[] y, int classes) {
 		trust = Fuzzy.calcTrust(rule, x, y, myClass);
+		if(trust <= 0.5) {
+			weight = 0;
+			myClass = -1;
+			return;
+		}
 		weight = trust;
 		for (int i = 0; i < classes; i++) {
 			if (i != myClass) {
