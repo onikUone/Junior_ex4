@@ -60,7 +60,7 @@ public class GroupController {
 				} else {
 					comp = Fuzzy.calcFit(individual[i].rule, f.x[p]) * individual[i].weight;
 					if (comp == max) {
-						if (individual[maxRuleIndex].myClass != individual[i].myClass || comp == 0) {
+						if (individual[maxRuleIndex].myClass != individual[i].myClass || comp == 0) {//最大値が等しく && (結論部が違う || ルールにフィットしていない)
 							flg = -1;
 							continue;
 						}

@@ -21,7 +21,6 @@ public class Main {
 		System.out.println(gc.individual[2].fitness);
 		System.out.println("-----");
 
-
 //		gc.initialGenerate();
 //		System.out.println(gc.pDontCare);
 //
