@@ -4,7 +4,7 @@ import static main.FuzzySetTriangle.*;
 
 public class GroupController {
 	//member field
-	int Npop = 3;
+	int Npop;
 	int attribute; //扱うデータセットの属性数
 	double pDontCare;
 	Individual[] individual;
@@ -15,6 +15,7 @@ public class GroupController {
 
 	//test個体群
 	public void testGenerate() {
+		Npop = 3;
 		int setRule1[] = { 0, 0, 0, 2, 0, 0, 0, 0 };
 		int setRule2[] = { 0, 4, 0, 0, 3, 0, 0, 4 };
 		int setRule3[] = { 0, 1, 0, 3, 1, 2, 0, 0 };
@@ -82,7 +83,7 @@ public class GroupController {
 	//constractor
 	GroupController(int Npop, Fuzzy f, MersenneTwisterFast mtf) {
 		this.mtf = mtf;
-		//		this.Npop = Npop;
+		this.Npop = Npop;
 		this.individual = new Individual[this.Npop];
 		this.attribute = f.attribute;
 		this.pDontCare = (double) (this.attribute - ruleNumber) / (double) f.attribute;

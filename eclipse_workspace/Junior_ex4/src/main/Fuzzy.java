@@ -81,7 +81,7 @@ public class Fuzzy {
 	//未知パターン推論
 	public static int reasoning(double[] x, Individual[] individual) {
 		int flg = 0;
-		int reasoningClass = -1;
+		int maxRuleIndex = -1;
 		double max = 0;
 		double comp = 0;
 		for (int i = 0; i < individual.length; i++) {
@@ -90,29 +90,29 @@ public class Fuzzy {
 			}
 			if(flg == 0) {
 				max = calcFit(individual[i].rule, x) * individual[i].weight;
-				reasoningClass = individual[i].myClass;
+				maxRuleIndex = i;
 				flg = 1;
 			}
 			else {
 				comp = calcFit(individual[i].rule, x) * individual[i].weight;
 				if (comp == max) {
-					if (reasoningClass != individual[i].myClass) {
+					if (individual[maxRuleIndex].myClass != individual[i].myClass || comp == 0) {
 						flg = -1;
 						continue;
 					}
 				}
 				if(comp > max) {
 					max = comp;
-					reasoningClass = individual[i].myClass;
+					maxRuleIndex = i;
 					flg = 1;
 				}
 			}
 		}
-		if(flg == -1) {
+		if(flg == -1) {//識別不能
 			return -1;
 		}
 		else {
-			return reasoningClass;
+			return individual[maxRuleIndex].myClass;
 		}
 	}
 
