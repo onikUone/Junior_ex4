@@ -26,7 +26,8 @@ public class GroupController {
 	}
 
 	//初期個体群の生成
-	public void initialGenerate() {
+	public void initialGenerate(int n) {
+		this.Npop = n;
 		int[] setRule = new int[attribute];
 		for (int i = 0; i < Npop; i++) {
 			for (int j = 0; j < attribute; j++) {
@@ -43,14 +44,15 @@ public class GroupController {
 	}
 
 	//個体の評価
-	public void evaluation() {
+	public double evaluation() {
 		int flg;
+		int recognized = 0;
 		int maxRuleIndex = -1;
 		double max = 0;
 		double comp = 0;
 		for (int p = 0; p < f.x.length; p++) {
 			flg = 0;
-			for (int i = 0; i < Npop; i++) {
+			for (int i = 0; i < individual.length; i++) {
 				if (individual[i].trust <= 0.5) {
 					continue;
 				}
@@ -75,15 +77,17 @@ public class GroupController {
 			}
 			if (flg != -1 && individual[maxRuleIndex].myClass == f.y[p]) {
 				individual[maxRuleIndex].fitness++;
+				recognized++;
 			}
 		}
+
+		return (double)recognized / f.y.length;
 
 	}
 
 	//constractor
-	GroupController(int Npop, Fuzzy f, MersenneTwisterFast mtf) {
+	GroupController(Fuzzy f, MersenneTwisterFast mtf) {
 		this.mtf = mtf;
-		this.Npop = Npop;
 		this.individual = new Individual[this.Npop];
 		this.attribute = f.attribute;
 		this.pDontCare = (double) (this.attribute - ruleNumber) / (double) f.attribute;
