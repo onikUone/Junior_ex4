@@ -45,6 +45,11 @@ public class Individual {
 		}
 	}
 
+	//fitness初期化
+	public void clearFitness() {
+		this.fitness = 0;
+	}
+
 	//constractor
 	Individual(int[] rule, Fuzzy f) {
 		this.rule = new int[f.attribute];
