@@ -1,0 +1,195 @@
+pima0_0 End.
+pima0_1 End.
+pima0_2 End.
+pima0_3 End.
+pima0_4 End.
+pima0_5 End.
+pima0_6 End.
+pima0_7 End.
+pima0_8 End.
+pima0_9 End.
+学習用 誤識別率 : 0.31667737835406273
+評価用 誤識別率 : 0.32947096762886235
+pima1_0 End.
+pima1_1 End.
+pima1_2 End.
+pima1_3 End.
+pima1_4 End.
+pima1_5 End.
+pima1_6 End.
+pima1_7 End.
+pima1_8 End.
+pima1_9 End.
+学習用 誤識別率 : 0.3119189329362656
+評価用 誤識別率 : 0.32417976760082023
+pima2_0 End.
+pima2_1 End.
+pima2_2 End.
+pima2_3 End.
+pima2_4 End.
+pima2_5 End.
+pima2_6 End.
+pima2_7 End.
+pima2_8 End.
+pima2_9 End.
+学習用 誤識別率 : 0.30426352860476985
+評価用 誤識別率 : 0.3189678742310321
+pima3_0 End.
+pima3_1 End.
+pima3_2 End.
+pima3_3 End.
+pima3_4 End.
+pima3_5 End.
+pima3_6 End.
+pima3_7 End.
+pima3_8 End.
+pima3_9 End.
+学習用 誤識別率 : 0.32928423245192107
+評価用 誤識別率 : 0.32028366370471634
+pima4_0 End.
+pima4_1 End.
+pima4_2 End.
+pima4_3 End.
+pima4_4 End.
+pima4_5 End.
+pima4_6 End.
+pima4_7 End.
+pima4_8 End.
+pima4_9 End.
+学習用 誤識別率 : 0.31858013434496374
+評価用 誤識別率 : 0.33849965823650036
+pima : 学習用 誤識別率 ave = 31.61448413383966
+pima : 評価用 誤識別率 ave = 32.628038628038624
+-------pima End.
+vehicle0_0 End.
+vehicle0_1 End.
+vehicle0_2 End.
+vehicle0_3 End.
+vehicle0_4 End.
+vehicle0_5 End.
+vehicle0_6 End.
+vehicle0_7 End.
+vehicle0_8 End.
+vehicle0_9 End.
+学習用 誤識別率 : 0.3772142455731875
+評価用 誤識別率 : 0.40761096230910476
+vehicle1_0 End.
+vehicle1_1 End.
+vehicle1_2 End.
+vehicle1_3 End.
+vehicle1_4 End.
+vehicle1_5 End.
+vehicle1_6 End.
+vehicle1_7 End.
+vehicle1_8 End.
+vehicle1_9 End.
+学習用 誤識別率 : 0.375953758638645
+評価用 誤識別率 : 0.398776520177449
+vehicle2_0 End.
+vehicle2_1 End.
+vehicle2_2 End.
+vehicle2_3 End.
+vehicle2_4 End.
+vehicle2_5 End.
+vehicle2_6 End.
+vehicle2_7 End.
+vehicle2_8 End.
+vehicle2_9 End.
+学習用 誤識別率 : 0.3768933927065146
+評価用 誤識別率 : 0.3912385241177811
+vehicle3_0 End.
+vehicle3_1 End.
+vehicle3_2 End.
+vehicle3_3 End.
+vehicle3_4 End.
+vehicle3_5 End.
+vehicle3_6 End.
+vehicle3_7 End.
+vehicle3_8 End.
+vehicle3_9 End.
+学習用 誤識別率 : 0.3817569780201291
+評価用 誤識別率 : 0.3865241646897994
+vehicle4_0 End.
+vehicle4_1 End.
+vehicle4_2 End.
+vehicle4_3 End.
+vehicle4_4 End.
+vehicle4_5 End.
+vehicle4_6 End.
+vehicle4_7 End.
+vehicle4_8 End.
+vehicle4_9 End.
+学習用 誤識別率 : 0.378065862617606
+評価用 誤識別率 : 0.3967911422942382
+vehicle : 学習用 誤識別率 ave = 37.79768475112164
+vehicle : 評価用 誤識別率 ave = 39.61882627176745
+-------vehicle End.
+australian0_0 End.
+australian0_1 End.
+australian0_2 End.
+australian0_3 End.
+australian0_4 End.
+australian0_5 End.
+australian0_6 End.
+australian0_7 End.
+australian0_8 End.
+australian0_9 End.
+学習用 誤識別率 : 0.16493559524975038
+評価用 誤識別率 : 0.17989153101351918
+australian1_0 End.
+australian1_1 End.
+australian1_2 End.
+australian1_3 End.
+australian1_4 End.
+australian1_5 End.
+australian1_6 End.
+australian1_7 End.
+australian1_8 End.
+australian1_9 End.
+学習用 誤識別率 : 0.16545366893954888
+評価用 誤識別率 : 0.18045736216267244
+australian2_0 End.
+australian2_1 End.
+australian2_2 End.
+australian2_3 End.
+australian2_4 End.
+australian2_5 End.
+australian2_6 End.
+australian2_7 End.
+australian2_8 End.
+australian2_9 End.
+学習用 誤識別率 : 0.16490350996308306
+評価用 誤識別率 : 0.17970356255670566
+australian3_0 End.
+australian3_1 End.
+australian3_2 End.
+australian3_3 End.
+australian3_4 End.
+australian3_5 End.
+australian3_6 End.
+australian3_7 End.
+australian3_8 End.
+australian3_9 End.
+学習用 誤識別率 : 0.16490677670700493
+評価用 誤識別率 : 0.17488430052695098
+australian4_0 End.
+australian4_1 End.
+australian4_2 End.
+australian4_3 End.
+australian4_4 End.
+australian4_5 End.
+australian4_6 End.
+australian4_7 End.
+australian4_8 End.
+australian4_9 End.
+学習用 誤識別率 : 0.16614797112488464
+評価用 誤識別率 : 0.1846066504613079
+australian : 学習用 誤識別率 ave = 16.526950439685436
+australian : 評価用 誤識別率 ave = 17.990868134423124
+-------australian End.
+
+開始時刻 : 16時 46分 46秒
+終了時刻 : 20時 48分 34秒
+経過時間 : 4時間 1分 48秒
+
+seed : 150
