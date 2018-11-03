@@ -14,6 +14,7 @@ public class GroupController {
 
 	Individual[] bestGeneration;
 	Individual[] individual;
+	Individual[] classifier;
 	Fuzzy f;
 	MersenneTwisterFast mtf;
 
@@ -49,14 +50,14 @@ public class GroupController {
 			}
 			individual[i] = new Individual(setRule, f);
 		}
-		recogRateMax = evaluation(this.individual);
+		recogRateMax = evaluation(this.individual, this.f);
 		for(int i = 0; i < individual.length; i++) {
 			bestGeneration[i] = new Individual(individual[i].rule, f);
 		}
 	}
 
 	//個体の評価 - および適応度(fitness)の計算 - 識別率の計算
-	public double evaluation(Individual[] _individual) {
+	public double evaluation(Individual[] _individual, Fuzzy _f) {
 		int flg;
 		int recognized = 0;
 		int maxRuleIndex = -1;
@@ -65,18 +66,18 @@ public class GroupController {
 		for(int i = 0; i < _individual.length; i++) {
 			_individual[i].clearFitness();
 		}
-		for (int p = 0; p < f.x.length; p++) {
+		for (int p = 0; p < _f.x.length; p++) {
 			flg = 0;
 			for (int i = 0; i < _individual.length; i++) {
 				if (_individual[i].trust <= 0.5) {
 					continue;
 				}
 				if (flg == 0) {
-					max = Fuzzy.calcFit(_individual[i].rule, f.x[p]) * _individual[i].weight;
+					max = Fuzzy.calcFit(_individual[i].rule, _f.x[p]) * _individual[i].weight;
 					maxRuleIndex = i;
 					flg = 1;
 				} else {
-					comp = Fuzzy.calcFit(_individual[i].rule, f.x[p]) * _individual[i].weight;
+					comp = Fuzzy.calcFit(_individual[i].rule, _f.x[p]) * _individual[i].weight;
 					if (comp == max) {
 						if (_individual[maxRuleIndex].myClass != _individual[i].myClass || comp == 0) {//最大値が等しく && (結論部が違う || ルールにフィットしていない)
 							flg = -1;
@@ -90,13 +91,12 @@ public class GroupController {
 					}
 				}
 			}
-			if (flg != -1 && _individual[maxRuleIndex].myClass == f.y[p]) {
+			if (flg != -1 && _individual[maxRuleIndex].myClass == _f.y[p]) {
 				_individual[maxRuleIndex].fitness++;
 				recognized++;
 			}
 		}
-		return (double) recognized / f.y.length;
-
+		return (double) recognized / _f.y.length;
 	}
 
 	//新規 子ルール生成
@@ -188,7 +188,7 @@ public class GroupController {
 		this.Nrep = _Nrep;
 		double recogRate;
 		nextChildren();
-		recogRate = evaluation(this.individual);
+		recogRate = evaluation(this.individual, this.f);
 		if(recogRate > recogRateMax) {
 			recogRateMax = recogRate;
 			for(int i = 0; i < individual.length; i++) {
@@ -196,7 +196,7 @@ public class GroupController {
 			}
 //			System.out.println(recogRate * 100);
 		}
-		System.out.println(recogRate * 100);
+//		System.out.println(recogRate * 100);
 	}
 
 	public void bubbleSort(Individual[] _individual) {
@@ -210,6 +210,26 @@ public class GroupController {
 					_individual[i-1] = tmp;
 					flg = true;
 				}
+			}
+		}
+	}
+
+	//識別器の獲得
+	public void getClassifier() {
+		int n_rule = 0;
+		int tmp = 0;
+		evaluation(bestGeneration, this.f);
+		for(int i = 0; i < bestGeneration.length; i++) {
+			if(bestGeneration[i].fitness != 0) {
+				n_rule++;
+			}
+		}
+		classifier = new Individual[n_rule];
+
+		for(int i = 0; i < bestGeneration.length; i++) {
+			if(bestGeneration[i].fitness != 0) {
+				classifier[tmp] = new Individual(bestGeneration[i].rule, f);
+				tmp++;
 			}
 		}
 	}

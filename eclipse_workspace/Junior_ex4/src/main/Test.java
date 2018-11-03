@@ -9,7 +9,7 @@ public class Test {
 	Test(int _i){
 		this.i = _i;
 	}
-
+	//		GroupController gc = new GroupController(f, mtf);
 	//		gc.testGenerate();
 	//		gc.evaluation(gc.individual);
 	//		System.out.print("誤識別率 : ");
