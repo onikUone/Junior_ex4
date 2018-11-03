@@ -4,7 +4,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class Main {
 
@@ -12,7 +14,7 @@ public class Main {
 		//初期値
 		int Npop = 30;
 		int Nrep = 10;
-		int n_generation = 100;
+		int n_generation = 10000;
 		int TEN_CV = 10;
 		int TRIAL = 5;
 		int seed = 0;
@@ -30,6 +32,13 @@ public class Main {
 		Arrays.fill(ave_tra, 0);
 		Arrays.fill(ave_tst, 0);
 
+		Date start = new Date();
+		SimpleDateFormat hour = new SimpleDateFormat("k");
+		SimpleDateFormat minutes = new SimpleDateFormat("m");
+		SimpleDateFormat second = new SimpleDateFormat("s");
+		int startHour = Integer.parseInt(hour.format(start));
+		int startMinutes = Integer.parseInt(minutes.format(start));
+		int startSecond = Integer.parseInt(second.format(start));
 
 		for (int nowDataset = 0; nowDataset < setName.length; nowDataset++) {
 			String outPath = "src/output/" + setName[nowDataset] + ".dat";
@@ -71,7 +80,23 @@ public class Main {
 			System.out.println(setName[nowDataset] + " : 評価用 誤識別率 ave = " + (ave_tst[nowDataset] * 100));
 			System.out.println("-------" + setName[nowDataset] + " End.");
 		}
+
+		Date end = new Date();
+		int endHour = Integer.parseInt(hour.format(end));
+		int endMinutes = Integer.parseInt(minutes.format(end));
+		int endSecond = Integer.parseInt(second.format(end));
+
+		System.out.println("");
+		System.out.println("開始時刻 : " + startHour + "時 " + startMinutes + "分 " + startSecond + "秒");
+		System.out.println("終了時刻 : " + endHour + "時 " + endMinutes + "分 " + endSecond + "秒");
+		int time = (endHour * 3600 + endMinutes * 60 + endSecond) - (startHour * 3600 + startMinutes * 60 + startSecond);
+		System.out.print("経過時間 : ");
+		System.out.print((time/3600) + "時間 ");
+		System.out.print(((time%3600)/60) + "分 ");
+		System.out.println(((time%3600)%60) + "秒");
+		System.out.println("");
 		System.out.println("seed : " + seed);
+
 	}
 
 }
