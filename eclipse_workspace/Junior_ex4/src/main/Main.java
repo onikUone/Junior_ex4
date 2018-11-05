@@ -61,7 +61,7 @@ public class Main {
 					path = "src/" + setName[nowDataset] + "/a" + nowTRY + "_" + nowCV + "_" + setName[nowDataset] + "-10tst.dat";
 					Fuzzy f_test = new Fuzzy(path);
 					double e = gc.evaluation(gc.classifier, f_train);
-					outPrint.println(String.valueOf(e));
+					outPrint.println(String.valueOf((1 - e)*100));
 					recogRate_tra[nowTRY] += 1 - e;
 					recogRate_tst[nowTRY] += 1 - gc.evaluation(gc.classifier, f_test);
 					seed++;
